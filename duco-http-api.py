@@ -5,6 +5,7 @@ faucetuser = "username"
 faucetpasswd = "password"
 claimamount = int(10)
 enable_faucet = False
+api_port = 5000
 
 
 #only a program variable
@@ -176,4 +177,4 @@ def httpregister(name, passwd, email):
     
 
 
-app.run(host='0.0.0.0', port=5000)
+app.run(host='0.0.0.0', port=api_port)
