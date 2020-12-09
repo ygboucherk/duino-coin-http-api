@@ -1,2 +1,2 @@
-bitcoinshell.mooo.com:58080
 yanis-boucherk.dynamic-dns.net
+bitcoinshell.mooo.com:58080
