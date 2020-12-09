@@ -8,8 +8,10 @@ enable_faucet = False
 api_port = 5000
 
 
-#only a program variable
+# program variables
 users = [faucetuser]
+version = "1.1"
+rpc_ip = requests.get("https://api.ipify.org").text
 
 
 def login(username, password): 
@@ -121,6 +123,8 @@ def faucet(user):
                     toreturn = str("Sent ") +str(claimamount) +str(" DUCO to ") +str(user)
                     getbalance()
                     return toreturn
+    else:
+        return "Faucet disabled, sorry."
     logout()
 
 
@@ -145,7 +149,7 @@ def faucetinfo():
         else:
             return "error"
     else:
-        return "Faucet isn't enabled"
+        return "Faucet disabled"
     
 
 @app.route("/wallet/getbalance/<user>/<password>")
@@ -174,7 +178,14 @@ def httpregister(name, passwd, email):
         return "OK"
     else:
         return registerfeedback
-    
+
+@app.route("/ping")
+def ping():
+    return "OK"
+
+@app.route("/version")
+def version():
+    return "1.1"
 
 
-app.run(host='0.0.0.0', port=api_port)
+app.run(host=rpc_ip, port=api_port)
