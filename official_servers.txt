@@ -1,3 +1,3 @@
 yanis-boucherk.dynamic-dns.net:5000
 bitcoinshell.mooo.com:58080
-# This is only a placeholder. Else it doesn't handle the newline.
+This line is only a placeholder. Else it doesn't handle the newline.
