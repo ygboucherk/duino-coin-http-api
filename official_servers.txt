@@ -1,4 +1,4 @@
 51.222.28.83:58080
 bitcoinshell.mooo.com:58080
 yanis-boucherk.dynamic-dns.net:5000
-This line is only a placeholder. Else it doesn't handle the newline correctly
+This line is only a placeholder. Else android app doesn't handle the newline correctly
