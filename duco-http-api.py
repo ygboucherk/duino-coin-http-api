@@ -10,7 +10,7 @@ api_port = 5000
 
 # program variables
 users = [faucetuser]
-version = "1.1"
+version = "1.2"
 rpc_ip = requests.get("https://api.ipify.org").text
 
 
@@ -83,6 +83,7 @@ def register(username, password, email):
     
     #sends register informations
     s.send(bytes(f"REGI,{str(username)},{str(password)},{str(email)}", encoding="utf8")) # sends register details to server
+    global registerfeedback
     registerfeedback = s.recv(64).decode() # receives register feedback
     global loggedin
     if registerfeedback == "OK":
@@ -90,6 +91,14 @@ def register(username, password, email):
     else:
         loggedin = False
         print(registerfeedback) # prints it on screen
+
+def changepassword(oldpassword, newpassword):
+    if loggedin:
+        tosend = str("CHGP,") +str(oldpassword) +str(",") +str(newpassword)
+        s.send(bytes(tosend, encoding="utf8"))
+        global chgpasswdfeedback
+        chgpasswdfeedback = s.recv(128).decode()
+
 
 
 def logout():
@@ -179,13 +188,19 @@ def httpregister(name, passwd, email):
     else:
         return registerfeedback
 
+@app.route("/wallet/changepasswd/<username>/<oldpassword>/<newpassword>")
+def httpchangepasswd(username, oldpassword, newpassword):
+    login(username, oldpassword)
+    changepassword(oldpassword, newpassword)
+    return chgpasswdfeedback
+    
 @app.route("/ping")
 def ping():
     return "OK"
 
 @app.route("/version")
 def version():
-    return "1.1"
+    return "1.2"
 
 
-app.run(host=rpc_ip, port=api_port)
+app.run(host="localhost", port=api_port)
