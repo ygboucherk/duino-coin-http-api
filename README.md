@@ -51,6 +51,10 @@ Send a GET request to this url
 
 *Email field is also required (but you still can try a fake email hehe)*
 
+#### Changing password
+Send a get request to this url :
+`http://<api_ip>:<api_port>/wallet/changepasswd/<username>/<old_password>/<new_password>`
+
 ### Faucet
 For claiming, send a GET a get request to 
 
