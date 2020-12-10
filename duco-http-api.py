@@ -203,4 +203,4 @@ def version():
     return "1.2"
 
 
-app.run(host="localhost", port=api_port)
+app.run(host=rpc_ip, port=api_port)
