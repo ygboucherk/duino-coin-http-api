@@ -10,7 +10,7 @@ api_port = 5000
 
 # program variables
 users = [faucetuser]
-version = "1.2"
+version = "1.3"
 rpc_ip = requests.get("https://api.ipify.org").text
 
 
@@ -98,6 +98,14 @@ def changepassword(oldpassword, newpassword):
         s.send(bytes(tosend, encoding="utf8"))
         global chgpasswdfeedback
         chgpasswdfeedback = s.recv(128).decode()
+
+def stats():
+    global status
+    if loggedin:
+        s.send(bytes("STAT", encoding="utf8"))
+        status = s.recv(128).decode()
+    else:
+        status = "Not logged in"
 
 
 
@@ -200,7 +208,24 @@ def ping():
 
 @app.route("/version")
 def version():
-    return "1.2"
+    return "1.3"
+
+@app.route("/ducoserverip")
+def ducoserverip():
+    import requests, socket
+    server = requests.get("https://raw.githubusercontent.com/revoxhere/duino-coin/gh-pages/serverip.txt").text # requests IP and port
+    splitted = str.splitlines(server) # treats response
+    ip = splitted[0] # isolates IP
+    port = splitted[1] # isolates port
+    ipport = str(ip)+str(":")+str(port) # ip:port
+    return ipport
+
+@app.route("/wallet/userstats/<username>/<password>")
+def userstat(username, password):
+    login(username, password)
+    stats()
+    return status
+    logout()
 
 
-app.run(host=rpc_ip, port=api_port)
+app.run(host="localhost", port=api_port)
