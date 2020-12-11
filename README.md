@@ -53,7 +53,21 @@ Send a GET request to this url
 
 #### Changing password
 Send a get request to this url :
+
 `http://<api_ip>:<api_port>/wallet/changepasswd/<username>/<old_password>/<new_password>`
+
+
+#### Getting DUCO email and ranking
+For getting DUCO email username, send a GET request to this url : 
+
+
+`http://<api_ip>:<api_port>/wallet/userstats/<username>/<password>`
+
+####
+
+Getting server address. For getting DUCO server address, send a GET request to this url : 
+
+`http://<api_ip>:<api_port>/ducoserverip`
 
 ### Faucet
 For claiming, send a GET a get request to 
