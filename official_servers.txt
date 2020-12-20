@@ -1,5 +1,5 @@
 51.222.28.83:58080
-bitcoinshell.mooo.com:58080
 ygboucherk.ddns.net:5000
 yanis-boucherk.dynamic-dns.net:5000
+bitcoinshell.mooo.com:58080
 This line is only a placeholder. Else android app doesn't handle the newline correctly
