@@ -1,3 +1,4 @@
+35.229.53.198:58080
 51.222.28.83:58080
 ygboucherk.ddns.net:5000
 yanis-boucherk.dynamic-dns.net:5000
