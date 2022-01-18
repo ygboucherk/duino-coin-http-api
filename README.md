@@ -46,7 +46,7 @@ Then feedback (from DUCO server) is returned
 Send a GET request to this url 
 
 
-`http://<api_ip>:<api_port>/wallet/sendtx/<desired_username>/<desired_password>/<email>`
+`http://<api_ip>:<api_port>/wallet/register/<desired_username>/<desired_password>/<email>`
 
 
 *Email field is also required (but you still can try a fake email hehe)*
